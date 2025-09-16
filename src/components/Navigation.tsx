@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,6 +28,10 @@ const Navigation = () => {
           <a href="/contact" className="text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
             CONTACT
           </a>
+        </div>
+
+        <div className="hidden md:flex items-center space-x-4">
+          <ThemeToggle />
         </div>
 
         <Button
@@ -58,6 +63,11 @@ const Navigation = () => {
             <a href="/contact" className="block text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
               CONTACT
             </a>
+            
+            {/* Mobile Theme Toggle */}
+            <div className="pt-4 border-t border-border">
+              <ThemeToggle />
+            </div>
           </div>
         </div>
       )}
