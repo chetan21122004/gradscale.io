@@ -70,7 +70,11 @@ const Blog = () => {
                 <article key={post.id} className="group">
                   <Link to={`/blog/${post.id}`} className="block">
                     <div className="relative overflow-hidden mb-6">
-                      <div className="w-full h-64 bg-muted/40 transition-transform duration-700 group-hover:scale-105" />
+                      <img 
+                        src={post.image} 
+                        alt={post.title}
+                        className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
                       <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       
                       {/* Category Badge */}

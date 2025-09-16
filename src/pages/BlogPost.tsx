@@ -66,7 +66,13 @@ const BlogPost = () => {
             </div>
             
             {/* Featured Image */}
-            <div className="w-full h-96 bg-muted/40 mb-12"></div>
+            <div className="w-full h-96 mb-12 overflow-hidden">
+              <img 
+                src={post.image} 
+                alt={post.title}
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+              />
+            </div>
             
             {/* Article Content */}
             <div className="prose prose-lg max-w-none">
@@ -120,7 +126,13 @@ const BlogPost = () => {
                   .slice(0, 2)
                   .map(relatedPost => (
                     <Link key={relatedPost.id} to={`/blog/${relatedPost.id}`} className="group">
-                      <div className="w-full h-48 bg-muted/40 mb-4 group-hover:bg-muted/60 transition-colors duration-300"></div>
+                      <div className="w-full h-48 mb-4 overflow-hidden">
+                        <img 
+                          src={relatedPost.image} 
+                          alt={relatedPost.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        />
+                      </div>
                       <h4 className="text-lg font-light text-architectural group-hover:text-muted-foreground transition-colors duration-300 mb-2">
                         {relatedPost.title}
                       </h4>
