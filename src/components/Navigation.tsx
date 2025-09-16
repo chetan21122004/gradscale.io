@@ -15,13 +15,13 @@ const Navigation = () => {
           <a href="/work" className="text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
             WORK
           </a>
-          <a href="#services" className="text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
+          <a href="/services" className="text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
             SERVICES
           </a>
-          <a href="#about" className="text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
+          <a href="/about" className="text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
             ABOUT
           </a>
-          <a href="#contact" className="text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
+          <a href="/contact" className="text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
             CONTACT
           </a>
         </div>
@@ -43,13 +43,13 @@ const Navigation = () => {
             <a href="/work" className="block text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
               WORK
             </a>
-            <a href="#services" className="block text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
+            <a href="/services" className="block text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
               SERVICES
             </a>
-            <a href="#about" className="block text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
+            <a href="/about" className="block text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
               ABOUT
             </a>
-            <a href="#contact" className="block text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
+            <a href="/contact" className="block text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
               CONTACT
             </a>
           </div>
