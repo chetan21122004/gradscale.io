@@ -1,9 +1,11 @@
+import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import project1 from "@/assets/project-1.jpg";
 import project2 from "@/assets/project-2.jpg";
 import project3 from "@/assets/project-3.jpg";
 
 const Work = () => {
+  const [activeCategory, setActiveCategory] = useState("ALL");
   const projects = [
     {
       image: project1,
@@ -63,6 +65,10 @@ const Work = () => {
 
   const categories = ["ALL", "RESIDENTIAL", "COMMERCIAL", "CULTURAL", "HOSPITALITY"];
 
+  const filteredProjects = activeCategory === "ALL" 
+    ? projects 
+    : projects.filter(project => project.category === activeCategory);
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -92,10 +98,19 @@ const Work = () => {
               {categories.map((category) => (
                 <button
                   key={category}
-                  className="text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300 relative group"
+                  onClick={() => setActiveCategory(category)}
+                  className={`text-minimal transition-colors duration-300 relative group ${
+                    activeCategory === category 
+                      ? "text-foreground" 
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
                 >
                   {category}
-                  <span className="absolute bottom-0 left-0 w-full h-px bg-foreground scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                  <span className={`absolute bottom-0 left-0 w-full h-px bg-foreground transition-transform duration-300 origin-left ${
+                    activeCategory === category 
+                      ? "scale-x-100" 
+                      : "scale-x-0 group-hover:scale-x-100"
+                  }`}></span>
                 </button>
               ))}
             </div>
@@ -108,7 +123,7 @@ const Work = () => {
         <div className="container mx-auto px-6">
           <div className="max-w-7xl mx-auto">
             <div className="grid md:grid-cols-2 gap-16 lg:gap-20">
-              {projects.map((project, index) => (
+              {filteredProjects.map((project, index) => (
                 <div key={index} className="group cursor-pointer">
                   <div className="relative overflow-hidden mb-8">
                     <img 
