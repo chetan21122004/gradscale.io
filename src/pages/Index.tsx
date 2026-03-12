@@ -1,19 +1,31 @@
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
-import Services from "@/components/Services";
-import About from "@/components/About";
+import StatsBar from "@/components/StatsBar";
+import IndustryNetwork from "@/components/IndustryNetwork";
+import WhatWeDo from "@/components/WhatWeDo";
+import HowItWorks from "@/components/HowItWorks";
+import WhyJoin from "@/components/WhyJoin";
 import Portfolio from "@/components/Portfolio";
-import Contact from "@/components/Contact";
+import ForColleges from "@/components/ForColleges";
+import FAQ from "@/components/FAQ";
+import CTASection from "@/components/CTASection";
+import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
     <div className="min-h-screen">
       <Navigation />
       <Hero />
-      <Services />
-      <About />
+      <StatsBar />
+      <IndustryNetwork />
+      <WhatWeDo />
+      <HowItWorks />
+      <WhyJoin />
       <Portfolio />
-      <Contact />
+      <ForColleges />
+      <FAQ />
+      <CTASection />
+      <Footer />
     </div>
   );
 };

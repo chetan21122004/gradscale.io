@@ -2,36 +2,43 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
+const navLinks = [
+  { label: "HOW IT WORKS", href: "#how-it-works" },
+  { label: "WHY JOIN", href: "#why-join" },
+  { label: "PORTFOLIO", href: "#portfolio" },
+  { label: "FOR COLLEGES", href: "#colleges" },
+  { label: "FAQ", href: "#faq" },
+];
+
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-        <div className="text-minimal text-foreground">
-          ARCH STUDIO
-        </div>
+        <a href="/" className="text-minimal text-foreground font-semibold">
+          GRADSCALE
+        </a>
         
-        <div className="hidden md:flex items-center space-x-12">
-          <a href="/work" className="text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
-            WORK
-          </a>
-          <a href="/services" className="text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
-            SERVICES
-          </a>
-          <a href="/about" className="text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
-            ABOUT
-          </a>
-          <a href="/blog" className="text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
-            BLOG
-          </a>
-          <a href="/contact" className="text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
-            CONTACT
-          </a>
+        <div className="hidden md:flex items-center space-x-10">
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300"
+            >
+              {link.label}
+            </a>
+          ))}
         </div>
 
         <div className="hidden md:flex items-center space-x-4">
           <ThemeToggle />
+          <a href="#apply">
+            <Button size="sm" className="text-minimal">
+              APPLY NOW
+            </Button>
+          </a>
         </div>
 
         <Button
@@ -44,27 +51,24 @@ const Navigation = () => {
         </Button>
       </div>
 
-      {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="md:hidden bg-background border-b border-border">
           <div className="container mx-auto px-6 py-6 space-y-4">
-            <a href="/work" className="block text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
-              WORK
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="block text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {link.label}
+              </a>
+            ))}
+            <a href="#apply" onClick={() => setIsMenuOpen(false)}>
+              <Button size="sm" className="text-minimal w-full mt-2">
+                APPLY NOW
+              </Button>
             </a>
-            <a href="/services" className="block text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
-              SERVICES
-            </a>
-            <a href="/about" className="block text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
-              ABOUT
-            </a>
-            <a href="/blog" className="block text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
-              BLOG
-            </a>
-            <a href="/contact" className="block text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
-              CONTACT
-            </a>
-            
-            {/* Mobile Theme Toggle */}
             <div className="pt-4 border-t border-border">
               <ThemeToggle />
             </div>

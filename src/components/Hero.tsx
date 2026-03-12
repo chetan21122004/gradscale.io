@@ -1,34 +1,52 @@
-import heroImage from "@/assets/hero-architecture.jpg";
+import { Button } from "@/components/ui/button";
+import { Check } from "lucide-react";
+
+const highlights = [
+  "Structured skill development & training program",
+  "Real-world business interaction exposure",
+  "Performance-based earning opportunities",
+  "Skill & Training Development Certificate",
+  "Internship opportunities for top performers",
+];
 
 const Hero = () => {
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroImage})` }}
-      />
-      
-      {/* Overlay */}
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-primary">
       <div className="absolute inset-0 hero-overlay" />
-      
-      {/* Content */}
-      <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
-        <h1 className="text-6xl md:text-8xl lg:text-9xl font-light text-white text-architectural mb-8 reveal">
-          MINIMAL
-          <br />
-          ARCHITECTURE
+
+      <div className="relative z-10 text-center max-w-4xl mx-auto px-6 py-32">
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-light text-primary-foreground text-architectural mb-8 reveal">
+          Turn Your Skills Into Real Income While Still in College
         </h1>
-        <p className="text-xl md:text-2xl text-white/80 font-light tracking-wide max-w-2xl mx-auto reveal-delayed">
-          Creating spaces that inspire through thoughtful design and uncompromising quality
+
+        <p className="text-lg md:text-xl text-primary-foreground/70 font-light leading-relaxed max-w-2xl mx-auto mb-6 reveal-delayed">
+          GradScale offers a structured Skill & Training Development Program designed to help students gain practical business exposure, interact with real clients, and develop valuable professional skills.
         </p>
-      </div>
-      
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 reveal-delayed">
-        <div className="w-px h-16 bg-white/40" />
-        <div className="text-minimal text-white/60 mt-4 rotate-90 origin-center">
-          SCROLL
+
+        <p className="text-base text-primary-foreground/50 font-light max-w-2xl mx-auto mb-10 reveal-delayed">
+          Students who demonstrate strong performance during the program may receive internship opportunities with GradScale or companies within our industry network.
+        </p>
+
+        <div className="flex flex-col items-start max-w-md mx-auto mb-12 space-y-3 reveal-delayed">
+          {highlights.map((item) => (
+            <div key={item} className="flex items-center space-x-3">
+              <Check className="w-4 h-4 text-primary-foreground/60 flex-shrink-0" />
+              <span className="text-sm text-primary-foreground/70 text-left">{item}</span>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 reveal-delayed">
+          <a href="#apply">
+            <Button size="lg" variant="secondary" className="text-minimal px-8">
+              APPLY FOR PROGRAM
+            </Button>
+          </a>
+          <a href="#colleges">
+            <Button size="lg" variant="outline" className="text-minimal px-8 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10">
+              PARTNER WITH US (COLLEGES)
+            </Button>
+          </a>
         </div>
       </div>
     </section>
