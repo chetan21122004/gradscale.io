@@ -59,11 +59,11 @@ const StatItem = ({ icon: Icon, value, suffix, label }: typeof stats[0]) => {
   const { count, ref } = useAnimatedCounter(value);
   return (
     <div ref={ref} className="text-center">
-      <Icon className="w-5 h-5 mx-auto mb-2 text-primary opacity-80" />
-      <div className="text-2xl md:text-3xl font-bold text-primary">
+      <Icon className="w-5 h-5 mx-auto mb-2 text-white/80" />
+      <div className="text-2xl md:text-3xl font-bold text-white">
         {count}{suffix}
       </div>
-      <div className="text-xs text-primary/60 mt-1 uppercase tracking-wider">{label}</div>
+      <div className="text-xs text-white/50 mt-1 uppercase tracking-wider">{label}</div>
     </div>
   );
 };
@@ -91,8 +91,8 @@ const Hero = () => {
         />
       ))}
 
-      {/* Dark gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/50 z-[1]" />
+      {/* Dark gradient overlay - stronger for readability */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#000000]/90 via-[#000000]/75 to-[#000000]/60 z-[1]" />
 
       {/* Animated grid pattern */}
       <div className="absolute inset-0 hero-grid-pattern z-[2]" />
@@ -101,7 +101,7 @@ const Hero = () => {
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-32 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         {/* Left: Headline + CTAs */}
         <div className="space-y-8">
-          <Badge variant="outline" className="border-primary/30 text-primary bg-primary/10 backdrop-blur-sm text-xs tracking-widest uppercase px-4 py-1.5 hero-fade-in">
+          <Badge variant="outline" className="border-white/30 text-white bg-white/10 backdrop-blur-sm text-xs tracking-widest uppercase px-4 py-1.5 hero-fade-in">
             Skill & Training Development Program
           </Badge>
 
@@ -111,7 +111,7 @@ const Hero = () => {
             While Still in College
           </h1>
 
-          <p className="text-base md:text-lg text-white/60 leading-relaxed max-w-lg hero-fade-in hero-delay-2">
+          <p className="text-base md:text-lg text-white/70 leading-relaxed max-w-lg hero-fade-in hero-delay-2">
             GradScale helps students gain practical business exposure, interact with real clients, and develop professional skills that matter.
           </p>
 
@@ -119,7 +119,7 @@ const Hero = () => {
             {highlights.map((h) => (
               <Badge
                 key={h}
-                className="bg-white/10 text-white/80 border-white/20 backdrop-blur-sm hover:bg-white/20 transition-colors text-xs px-3 py-1"
+                className="bg-white/10 text-white/90 border-white/20 backdrop-blur-sm hover:bg-white/20 transition-colors text-xs px-3 py-1.5"
               >
                 {h}
               </Badge>
@@ -128,13 +128,13 @@ const Hero = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 pt-2 hero-fade-in hero-delay-4">
             <a href="#apply">
-              <Button size="lg" className="hero-cta-glow bg-primary text-primary-foreground hover:bg-primary/90 text-sm uppercase tracking-widest px-8 group">
+              <Button size="lg" className="hero-cta-glow bg-destructive text-white hover:bg-destructive/90 text-sm uppercase tracking-widest px-8 group border-0">
                 Apply Now
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </a>
             <a href="#colleges">
-              <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 text-sm uppercase tracking-widest px-8">
+              <Button size="lg" variant="outline" className="border-white/40 text-white hover:bg-white/10 hover:text-white text-sm uppercase tracking-widest px-8">
                 Partner With Us
               </Button>
             </a>
@@ -146,7 +146,7 @@ const Hero = () => {
           <div className="hero-glass-card rounded-2xl p-8 md:p-10 space-y-8">
             <div className="text-center">
               <h3 className="text-white text-lg font-semibold tracking-wide uppercase">Our Impact</h3>
-              <div className="w-12 h-0.5 bg-primary mx-auto mt-3" />
+              <div className="w-12 h-0.5 bg-destructive mx-auto mt-3" />
             </div>
 
             <div className="grid grid-cols-2 gap-8">
@@ -156,7 +156,7 @@ const Hero = () => {
             </div>
 
             <div className="text-center pt-2">
-              <p className="text-white/40 text-xs italic">
+              <p className="text-white/50 text-xs italic">
                 "The best investment you can make is in yourself."
               </p>
             </div>
@@ -171,7 +171,7 @@ const Hero = () => {
             key={i}
             onClick={() => setCurrentSlide(i)}
             className={`w-2 h-2 rounded-full transition-all duration-500 ${
-              currentSlide === i ? "bg-primary w-8" : "bg-white/30 hover:bg-white/50"
+              currentSlide === i ? "bg-destructive w-8" : "bg-white/40 hover:bg-white/60"
             }`}
           />
         ))}
