@@ -35,7 +35,7 @@ const ForColleges = () => {
               </div>
 
               <div className="pt-8">
-                <Button size="lg" className="text-minimal">
+                <Button size="lg" className="text-white">
                   DOWNLOAD COLLEGE COLLABORATION PROPOSAL
                 </Button>
               </div>

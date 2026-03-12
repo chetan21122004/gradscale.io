@@ -105,7 +105,7 @@ const Hero = () => {
             Skill & Training Development Program
           </Badge>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.05] tracking-tight text-white hero-fade-in hero-delay-1">
+          <h1 className="sm:text-5xl text-3xl  font-bold leading-[1.05] tracking-tight text-white hero-fade-in hero-delay-1">
             Turn Your Skills Into{" "}
             <span className="hero-glow-text">Real Income</span>{" "}
             While Still in College
@@ -115,16 +115,6 @@ const Hero = () => {
             GradScale helps students gain practical business exposure, interact with real clients, and develop professional skills that matter.
           </p>
 
-          <div className="flex flex-wrap gap-2 hero-fade-in hero-delay-3">
-            {highlights.map((h) => (
-              <Badge
-                key={h}
-                className="bg-white/10 text-white/90 border-white/20 backdrop-blur-sm hover:bg-white/20 transition-colors text-xs px-3 py-1.5"
-              >
-                {h}
-              </Badge>
-            ))}
-          </div>
 
           <div className="flex flex-col sm:flex-row gap-4 pt-2 hero-fade-in hero-delay-4">
             <a href="#apply">
@@ -134,34 +124,14 @@ const Hero = () => {
               </Button>
             </a>
             <a href="#colleges">
-              <Button size="lg" variant="outline" className="border-white/40 text-white hover:bg-white/10 hover:text-white text-sm uppercase tracking-widest px-8">
+              <Button size="lg" className="border-white/40 text-white bg-white/10 hover:text-white text-sm uppercase tracking-widest px-8">
                 Partner With Us
               </Button>
             </a>
           </div>
         </div>
 
-        {/* Right: Glass Card with Stats */}
-        <div className="hero-fade-in hero-delay-3">
-          <div className="hero-glass-card rounded-2xl p-8 md:p-10 space-y-8">
-            <div className="text-center">
-              <h3 className="text-white text-lg font-semibold tracking-wide uppercase">Our Impact</h3>
-              <div className="w-12 h-0.5 bg-destructive mx-auto mt-3" />
-            </div>
 
-            <div className="grid grid-cols-2 gap-8">
-              {stats.map((stat) => (
-                <StatItem key={stat.label} {...stat} />
-              ))}
-            </div>
-
-            <div className="text-center pt-2">
-              <p className="text-white/50 text-xs italic">
-                "The best investment you can make is in yourself."
-              </p>
-            </div>
-          </div>
-        </div>
       </div>
 
       {/* Slide indicators */}
@@ -170,9 +140,8 @@ const Hero = () => {
           <button
             key={i}
             onClick={() => setCurrentSlide(i)}
-            className={`w-2 h-2 rounded-full transition-all duration-500 ${
-              currentSlide === i ? "bg-destructive w-8" : "bg-white/40 hover:bg-white/60"
-            }`}
+            className={`w-2 h-2 rounded-full transition-all duration-500 ${currentSlide === i ? "bg-destructive w-8" : "bg-white/40 hover:bg-white/60"
+              }`}
           />
         ))}
       </div>

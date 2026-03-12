@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/ThemeToggle";
 
 const navLinks = [
   { label: "HOW IT WORKS", href: "#how-it-works" },
@@ -19,7 +18,7 @@ const Navigation = () => {
         <a href="/" className="text-minimal text-foreground font-semibold">
           GRADSCALE
         </a>
-        
+
         <div className="hidden md:flex items-center space-x-10">
           {navLinks.map((link) => (
             <a
@@ -32,14 +31,7 @@ const Navigation = () => {
           ))}
         </div>
 
-        <div className="hidden md:flex items-center space-x-4">
-          <ThemeToggle />
-          <a href="#apply">
-            <Button size="sm" className="text-minimal">
-              APPLY NOW
-            </Button>
-          </a>
-        </div>
+
 
         <Button
           variant="ghost"
@@ -64,14 +56,7 @@ const Navigation = () => {
                 {link.label}
               </a>
             ))}
-            <a href="#apply" onClick={() => setIsMenuOpen(false)}>
-              <Button size="sm" className="text-minimal w-full mt-2">
-                APPLY NOW
-              </Button>
-            </a>
-            <div className="pt-4 border-t border-border">
-              <ThemeToggle />
-            </div>
+
           </div>
         </div>
       )}
