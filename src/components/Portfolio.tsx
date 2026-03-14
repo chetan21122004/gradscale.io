@@ -23,6 +23,7 @@ import arogyayatri from "@/assets/projects/arogyayatri.png";
 import dhanushri from "@/assets/projects/dhanushri.png";
 import pragatiEvents from "@/assets/projects/pragati-events.png";
 import labbbb from "@/assets/projects/labbbb.png";
+import dramit from "@/assets/projects/dramit.png";
 
 const projects = [
   { name: "Tisorah Box", url: "https://www.tisorahbox.com/", industry: "E-Commerce", image: tisorahbox },
@@ -38,10 +39,11 @@ const projects = [
   { name: "Dhanushri", url: "https://dhanushri-mauve.vercel.app/", industry: "Portfolio", image: dhanushri },
   { name: "Pragati Events", url: "https://pragati-events.vercel.app/", industry: "Events", image: pragatiEvents },
   { name: "MBReCE Lab", url: "https://labbbb.vercel.app/", industry: "Research", image: labbbb },
+  { name: "Dr. Amit Hosamani", url: "https://dramithosamani.com/", industry: "Healthcare", image: dramit },
 ];
 
 const row1 = [projects[0], projects[2], projects[4], projects[6], projects[8], projects[10], projects[12]];
-const row2 = [projects[1], projects[3], projects[5], projects[7], projects[9], projects[11]];
+const row2 = [projects[1], projects[3], projects[5], projects[7], projects[9], projects[11], projects[13]];
 
 interface ParallaxProps {
   items: typeof projects;
@@ -60,6 +62,8 @@ function ParallaxRow({ items, baseVelocity = 100 }: ParallaxProps) {
   const baseX = useMotionValue(0);
   const { scrollY } = useScroll();
   const scrollVelocity = useVelocity(scrollY);
+  const [isHovered, setIsHovered] = useState(false);
+  
   const smoothVelocity = useSpring(scrollVelocity, {
     damping: 50,
     stiffness: 400,
@@ -77,25 +81,33 @@ function ParallaxRow({ items, baseVelocity = 100 }: ParallaxProps) {
 
   const directionFactor = useRef<number>(1);
   useAnimationFrame((t, delta) => {
+    // Stop the normal infinite scroll when hovered.
+    // However, if the user scrolls (creating a scroll velocity spike), 
+    // we still want to apply that scroll-based movement.
+    const scrollMove = velocityFactor.get();
+    
     let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
 
-    /**
-     * This is what makes it move faster on scroll.
-     * The velocity factor is added to the base movement.
-     */
     if (velocityFactor.get() < 0) {
       directionFactor.current = -1;
     } else if (velocityFactor.get() > 0) {
       directionFactor.current = 1;
     }
 
-    moveBy += directionFactor.current * moveBy * velocityFactor.get();
+    moveBy += directionFactor.current * moveBy * scrollMove;
 
-    baseX.set(baseX.get() + moveBy);
+    // Apply movement only if not hovered OR if there's active scroll momentum
+    if (!isHovered || Math.abs(scrollMove) > 0.1) {
+      baseX.set(baseX.get() + moveBy);
+    }
   });
 
   return (
-    <div className="parallax flex whitespace-nowrap flex-nowrap overflow-hidden">
+    <div 
+      className="parallax flex whitespace-nowrap flex-nowrap overflow-hidden"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <motion.div className="scroller flex whitespace-nowrap flex-nowrap gap-4" style={{ x }}>
         {/* We repeat items multiple times to ensure we don't see gaps during the wrap */}
         {[...items, ...items, ...items, ...items].map((project, i) => (
@@ -202,7 +214,7 @@ const Portfolio = () => {
       <div className="container mx-auto px-6 mt-20">
         <div className="max-w-7xl mx-auto flex flex-wrap gap-12 border-t border-border pt-12">
           <div className="flex items-baseline gap-3">
-            <span className="text-4xl font-light text-architectural">13+</span>
+            <span className="text-4xl font-light text-architectural">14+</span>
             <span className="text-minimal text-muted-foreground uppercase">Deployments</span>
           </div>
           <div className="flex items-baseline gap-3">
