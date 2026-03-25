@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const navLinks = [
   { label: "HOW IT WORKS", href: "#how-it-works" },
@@ -11,6 +12,7 @@ const navLinks = [
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
@@ -31,7 +33,17 @@ const Navigation = () => {
           ))}
         </div>
 
+        <div className="hidden md:flex items-center space-x-3">
+          <Button
+            variant="outline"
+            size="sm"
+            className="text-minimal"
+            onClick={() => navigate("/portal")}
+          >
+            LOGIN/SIGNUP
+          </Button>
 
+        </div>
 
         <Button
           variant="ghost"
@@ -56,7 +68,23 @@ const Navigation = () => {
                 {link.label}
               </a>
             ))}
-
+            <div className="pt-2 flex gap-3">
+              <Button
+                variant="outline"
+                size="sm"
+                className="text-minimal flex-1"
+                onClick={() => { navigate("/portal"); setIsMenuOpen(false); }}
+              >
+                LOGIN
+              </Button>
+              <Button
+                size="sm"
+                className="text-minimal flex-1"
+                onClick={() => { navigate("/portal/student/login"); setIsMenuOpen(false); }}
+              >
+                SIGN UP
+              </Button>
+            </div>
           </div>
         </div>
       )}
